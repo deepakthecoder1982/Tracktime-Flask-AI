@@ -202,6 +202,7 @@ def calculate_productivity_internal(activities):
             hour_key = timestamp.replace(minute=0, second=0, microsecond=0)
             if hour_key not in hourly_activities:
                 hourly_activities[hour_key] = []
+                print(f"hour_key: %s" % hour_key)
             hourly_activities[hour_key].append((page_title, timestamp))
 
         logging.info(f"Hourly activities keys: {list(hourly_activities.keys())}")
