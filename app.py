@@ -147,7 +147,6 @@ def predict_category(page_title):
         # Match against the category list
         for category, keywords in category_list.items():
             if category == "Others":
-                return "idle"  # Assign 'Others' category with high confidence
                 logging.info(f"Skipping category: {category}")
                 continue
             for keyword in keywords:
@@ -185,6 +184,8 @@ def map_category_to_productivity(category):
             return "unproductive"
         elif category in category_list.get("Idle", []):
             return "idle"
+        elif category in category_list.get("Others", []):
+            return "idle"  # Default to idle for 'Others' category
         else:
             logging.warning(f"Category '{category}' not found in category list. Defaulting to 'idle'.")
             return "idle"  # Default to idle for unknown categories
