@@ -115,7 +115,7 @@ def get_user_activities(device_uid, date):
     try:
         result = session.execute(text(
             "SELECT page_title, timestamp FROM user_activity WHERE DATE(timestamp) = :date AND user_uid = :device_uid ORDER BY timestamp"
-        ), {"date": date, "device_uid": device_uid}).fetchall()
+        ), {"date": date, "device_uid": str(device_uid)}).fetchall()
         
         activities = []
         for row in result:
