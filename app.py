@@ -147,6 +147,8 @@ def predict_category(page_title):
         # Match against the category list
         for category, keywords in category_list.items():
             if category == "Others":
+                return "idle"  # Assign 'Others' category with high confidence
+                logging.info(f"Skipping category: {category}")
                 continue
             for keyword in keywords:
                 if keyword.lower() in page_title.lower():
